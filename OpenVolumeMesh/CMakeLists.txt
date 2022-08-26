@@ -7,11 +7,11 @@ if (NOT TARGET OpenVolumeMesh::OpenVolumeMesh)
 endif()
 
 # Add target for first example
-add_executable(simple_mesh simple_mesh/simple_mesh.cpp)
+add_executable(simple_mesh simple_mesh.cpp)
 
 target_link_libraries(simple_mesh OpenVolumeMesh::OpenVolumeMesh)
 
-set(OVM_CXX_STANDARD 11 CACHE STRING "C++ standard version to use")
+set(OVM_CXX_STANDARD 17 CACHE STRING "C++ standard version to use")
 set_property(CACHE OVM_CXX_STANDARD PROPERTY STRINGS 11 14 17 20)
 
 set_target_properties (simple_mesh PROPERTIES
