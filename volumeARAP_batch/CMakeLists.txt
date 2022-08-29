@@ -1,16 +1,13 @@
 cmake_minimum_required(VERSION 3.0)
 project(volumeARAP)
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 
 IF(NOT CMAKE_BUILD_TYPE)
   SET(CMAKE_BUILD_TYPE Release)
 ENDIF()
 
-SET(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${PROJECT_SOURCE_DIR}/Eigen/cmake")
-
 #Eigen3
 find_package(Eigen3 REQUIRED)
-INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/Eigen)
 
 #OpenVolumeMesh
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/../OpenVolumeMesh/src)
@@ -31,4 +28,5 @@ SET(HEADERS
 add_executable(${PROJECT_NAME} ./src/main.cpp ./src/MyUtils.cpp ./src/yyjARAPDeform.cpp ${HEADERS})
 #add_executable(${PROJECT_NAME} ${hello_src})
 target_link_libraries(${PROJECT_NAME} OpenVolumeMesh)
+target_link_libraries(${PROJECT_NAME} Eigen3::Eigen)
 set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG " )
